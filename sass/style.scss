@@ -511,11 +511,17 @@ header {
 }
 
 /***********service-section****************/
+.card{
+		transition-duration: 0.3s;
+	&:hover{
+		box-shadow: 0px 0px 20px #0000005c;
+	}
+}
 
 .card-body{
 	li{
 		a{
-
+			text-decoration: none;
 			.fa-pencil-alt{
 				transform: translateY(-66%);
 			    width: 50px;
