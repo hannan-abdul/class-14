@@ -340,12 +340,19 @@ header {
       border-color: #fff; }
 
 /***********service-section****************/
-.card-body li a .fa-pencil-alt {
-  transform: translateY(-66%);
-  width: 50px;
-  height: 50px;
-  background: #f26c4f;
-  border-radius: 50%; }
+.card {
+  transition-duration: 0.3s; }
+  .card:hover {
+    box-shadow: 0px 0px 20px #0000005c; }
+
+.card-body li a {
+  text-decoration: none; }
+  .card-body li a .fa-pencil-alt {
+    transform: translateY(-66%);
+    width: 50px;
+    height: 50px;
+    background: #f26c4f;
+    border-radius: 50%; }
 .card-body h3 {
   font-size: 16px;
   font-weight: 700;
