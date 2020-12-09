@@ -1,0 +1,45 @@
+%DefailtStyle {
+	color: #545454;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+}
+%PositionCenter{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+}
+%Overlay{
+			position: absolute;
+			content: "";
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+}
+%Rotate{
+				width: 50px;
+			    height: 50px;
+			    display: block;
+			    border-radius: 8px;
+			    transform: rotate(45deg);
+}
+%TopHeader{
+	font-size: 12px;
+		color: #7f7f7f;
+}
+%btn-custom{
+	background-color: $ThemeColor;
+	color: #fff !important;
+	border-radius: 30px;
+	padding: 12px 20px !important;
+	border: 1px solid $ThemeColor;
+	@media (max-width: 767px){
+			padding: 5px 10px !important;
+			&:hover{
+				padding: 5px 10px !important;
+			}
+			}
+}

@@ -2,65 +2,14 @@
 /*font-family: 'Montserrat', sans-serif;
 font-family: 'Raleway', sans-serif;*/
 
-$ThemeColor: #ff9b1a;
-$DarkColor: #1d1e1e;
 
-%DefailtStyle {
-	color: #545454;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 14px;
-}
-%PositionCenter{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-}
-%Overlay{
-			position: absolute;
-			content: "";
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-}
-%Rotate{
-				width: 50px;
-			    height: 50px;
-			    display: block;
-			    border-radius: 8px;
-			    transform: rotate(45deg);
-}
-%TopHeader{
-	font-size: 12px;
-		color: #7f7f7f;
-}
-%btn-custom{
-	background-color: $ThemeColor;
-	color: #fff !important;
-	border-radius: 30px;
-	padding: 12px 20px !important;
-	border: 1px solid $ThemeColor;
-}
-@mixin transition($Time , $Effect){
-	transition: all $Time $Effect;
-	-webkit-transition: all $Time $Effect;
-	-moz-transition: all $Time $Effect;
+@import "variable";
+@import "mixin";
+@import "include";
+@import "media";
 
-}
-@mixin transformScale($zoom){
-	transform: scale($zoom);
-	-webkit-transform: scale($zoom);
-	-moz-transform: scale($zoom);
-	}
 
-@mixin transformScaleX($zoom){
-	transform: scaleX($zoom);
-	-webkit-transform: scaleX($zoom);
-	-moz-transform: scaleX($zoom);
-	}
+
 
 body{
 @extend %DefailtStyle;
@@ -69,6 +18,10 @@ body{
 
 p{
 	margin-bottom: 0;
+	@media (max-width:$media_sm){
+		text-align: center;
+	
+}
 }
 header {
 	background-color: #efefef;
@@ -77,17 +30,31 @@ header {
 		@extend %TopHeader;
 	}
 	ul{
+		justify-content: flex-end;
 		li{
 			a{
 				@extend %TopHeader;
 				text-transform: uppercase;
+				@media (max-width: $media_sm){
+			justify-content: center;
+			padding: 10px;
+    		font-size: 14px;
+		}
 			}
+		}
+		@media (max-width: $media_sm){
+			justify-content: center;
+			padding: 10px;
+    		font-size: 14px;
 		}
 	}
 }
 
 .navbar {
 	ul{
+		@media(max-width: $media_sm){
+			text-align: center;
+		}
 		li{
 			a{
 				@extend %DefailtStyle;
@@ -97,6 +64,7 @@ header {
 				border-radius: 30px;
 				padding: 12px 20px !important;
 				border: 1px solid transparent;
+				transition-duration: 0.3s;
 			}
 			a:hover{
 				@extend %btn-custom;
@@ -115,6 +83,7 @@ header {
 		}
 	}
 }
+
 /////*************banner-section************////////
 .banner-section{
 	position: relative;
@@ -134,10 +103,24 @@ header {
 			font-size: 48px;
 			font-weight: 600;
 			color: #efefef;
+			@media(max-width: $media_md){
+				font-size: 35px;
+			}
+			@media(max-width: $media_sm){
+				font-size: 25px;
+    			margin-bottom: 25px;
+			}
+			    
 		}
 		.banner-inner{
 			color: #efefef;
 			padding: 50px 0;
+			@media(max-width: $media_md){
+				padding: 35px 0;
+			}
+			@media(max-width: $media_sm){
+				display: none;
+			}
 
 			h5{
 				font-size: 20px;
@@ -155,6 +138,7 @@ header {
 			border-radius: 30px;
 			font-size: 16px;
 			text-transform: uppercase;
+
 			&:hover{
 				@extend %btn-custom;
 				background-color: $ThemeColor;
@@ -162,15 +146,22 @@ header {
 		}
 	}
 }
+
 /**********feature-section************/
 .feature-section{
-	padding: 80px 0;
+	padding: 80px 0 10px 0;
 
 	.feature{
 		border: 1px solid #e1e1e1;
 		border-radius: 5px;
 		padding: 40px 30px;
 		position:relative; 
+		@media(max-width: $media_md){
+			padding: 10px 5px;
+		}
+		@media(max-width: $media_sm){
+			margin: 10px 0;
+		}
 
 		&:before{
 			@extend %Overlay;
@@ -236,12 +227,24 @@ header {
 
 .service-section{
 	padding: 80px 0;
+	@media (max-width: $media_md){
+		padding: 10px;
+	}
+	@media (max-width: $media_sm){
+		padding: 10px;
+	}
 	.btn-custom{
 		background-color: transparent;
 		text-transform: uppercase;
 		border-radius: 30px;
 		padding: 12px 20px !important;
 		border: 1px solid #333;
+		@media (max-width: $media_md){
+		margin-bottom: 10px;
+		}
+		@media (max-width: $media_sm){
+		margin-bottom: 10px;
+		}
 		&:hover{
 			background-color:$ThemeColor;
 			border:1px solid $ThemeColor;
@@ -259,6 +262,14 @@ header {
 	.service{
 		padding: 25px;
 		margin: 50px 0;
+		@media (max-width: $media_md){
+		margin: 15px 5px;
+		padding: 10px;
+		}
+		@media (max-width: $media_sm){
+		margin: 0;
+		}
+
 		img{}
 		h6{
 			font-size: 18px;
@@ -269,11 +280,15 @@ header {
 		}
 	}
 }
-
-	.header{
+.header{
 			position: relative;
 			padding-bottom: 25px;
     		margin-bottom: 30px;
+    		@media (max-width: $media_md){
+			padding: 15px 0;
+    		margin-bottom: 16px;
+		}
+    		
 
 		h1{
 			font-size: 24px;
@@ -303,7 +318,8 @@ header {
 		}
 	}
 
-/************step-section*****************/
+
+	/************step-section*****************/
 
 .step-section{
 	background-image: url(../images/banner-2.png);
@@ -311,10 +327,19 @@ header {
 	background-size: cover;
 	padding-top: 80px;
 	color: #fff;
+	@media (max-width:$media_md){
+			padding: 30px 0 10px 0;
+				}
+	@media (max-width:$media_sm){
+			text-align: center;
+				}
 	.step-image{
 		position: relative;
 		img{
 			&:first-child{
+				@media (max-width:$media_md){
+					width: 300px;
+				}
 				
 			}
 			&:nth-child(2){
@@ -334,6 +359,19 @@ header {
 		    display: block;
 		    border-radius: 8px;
 		    transform: rotate(45deg);
+		    @media (max-width:$media_md){
+				width: 40px;
+    			height: 40px;
+				}
+		    @media (max-width:$media_sm){
+				display: none;
+				}
+		}
+		h3{}
+		p{
+			@media (max-width:$media_sm){
+				padding: 15px 50px;
+				}
 		}
 	}
 	&:hover{
@@ -345,19 +383,29 @@ header {
 	}
 }
 
+
 /*************counter-section***************/
 
 .counter-section{
 	background: $ThemeColor;
 	padding: 50px 0;
 	color: #fff;
+	@media (max-width: $media_md){
+			padding: 10px 0;
+		}
 	.counter{
 		h4{
 			font-size: 50px;
+			@media (max-width: $media_sm){
+			font-size: 40px;
+		}
 		}
 		strong{
 			font-size: 18px;
 			text-transform: uppercase;
+			@media (max-width: $media_sm){
+			font-size: 15px;
+		}
 		}
 	}
 }
@@ -374,6 +422,12 @@ header {
 		}
 		img{
 			padding: 20px;
+			@media (max-width: $media_md){
+				width: 370px;
+			}
+			@media (max-width: $media_sm){
+				width: 290px;
+			}
 		}
 		span{
 			padding: 10px;
@@ -387,6 +441,12 @@ header {
 			top: 45%;
 			right: 10%;
 			transform: translate(10%, -45%);
+			@media (max-width: $media_sm){
+				top: 45%;
+			    right: 5%;
+			    transform: translate(5%, -45%);
+			}
+
 			span{
 				border: 3px solid #63cd68;
 			   @extend %Rotate;
@@ -402,6 +462,12 @@ header {
 			top:45%;
 			left: 10%;
 			transform: translate(-10%, -45%);
+			@media (max-width: $media_sm){
+			top: 45%;
+		    left: 5%;
+		    transform: translate(-5%, -45%);
+			}
+			
 			span{
 				border: 3px solid #63cd68;
 			   @extend %Rotate;
@@ -416,6 +482,11 @@ header {
 			top: -20%;
 		    left: 20%;
 		    transform: translate(-20%, 20%);
+		    @media(max-width: $media_sm){
+		    	    top: -35%;
+				    left: 15%;
+				    transform: translate(-15%, 35%);
+		    }
 			
 			span{
 				border: 3px solid #f05154;
@@ -431,6 +502,11 @@ header {
 			bottom: -20%;
 		    right: 20%;
 		    transform: translate(20%, -20%);
+		    @media(max-width: $media_sm){
+		    bottom: -20%;
+		    right: 12%;
+		    transform: translate(12%, 4%);
+			}
 			
 			span{
 				border: 3px solid #f05154;
@@ -446,6 +522,11 @@ header {
 		    top: -20%;
 		    right: 20%;
 		    transform: translate(20%, 20%);
+		   @media(max-width: $media_sm){
+		    	top: -35%;
+				right: 15%;
+				transform: translate(15%, 35%);
+		    }
 			span{
 				border: 3px solid #43c5ca;
 			   @extend %Rotate;
@@ -460,6 +541,11 @@ header {
 			bottom: -20%;
 		    left: 20%;
 		    transform: translate(-20%, -20%);
+		    @media(max-width: $media_sm){
+		    bottom: -35%;
+		    left: 15%;
+		    transform: translate(-15%, -35%);
+			}
 			span{
 				border: 3px solid #43c5ca;
 			   @extend %Rotate;
@@ -472,6 +558,7 @@ header {
 	}
 
 }
+
 .service-section{
 	.expert{
 		h5{
@@ -513,41 +600,132 @@ header {
 /***********service-section****************/
 .card{
 		transition-duration: 0.3s;
+		@media(max-width: $media_sm){
+			margin: 25px;
+		}
 	&:hover{
 		box-shadow: 0px 0px 20px #0000005c;
 	}
+	img{}
 }
 
-.card-body{
 
-	.shift-right{
-		padding-left: 90px;
-	}
-	li{
-		a{
-			text-decoration: none;
-			color: #000;
-			.fa-pencil-alt{
-				    transform: translateY(-75%);
-				    background: #f26c4f;
-				    border-radius: 50%;
-				    padding: 18px;
+.card-body{
+	padding-top: 0;
+	ul{
+		li{
+			>a{
+				    background-color: #f26c4f;
 				    color: #fff;
+				    height: 40px;
+				    width: 40px;
+				    display: inline-block;
+				    border-radius: 50%;
+				    line-height: 40px;
+				    text-align: center;
+				    transform: translateY(-20px);
+				i{}
+				
 			}
+			span{
+					a{
+						color: #333;
+						font-size: 14px;
+						text-decoration: none;
+					}
+				}
 		}
 	}
 	h3{
 		font-size: 16px;
 		font-weight: 700;
 		padding:20px 0;
+		@media (max-width: $media_md){
+			padding: 10px 0;
+		}
+	}
+}
+
+/*****************feedback****************/
+
+.carousel{
+	.carousel-inner{
+		.carousel-item{
+			text-align: center;
+			.client-img{
+				position: relative;
+				text-align: center;
+				display: inline-block;
+				img{
+					margin: auto;
+				}
+				span{
+					position: absolute;
+				    background-color: #ff9b1a;
+				    right: 3px;
+				    bottom: 3px;
+				    width: 40px;
+				    height: 40px;
+				    border-radius: 50%;
+				    line-height: 40px;
+				    transform: translate(3px, 3px);
+				    border: 3px solid;
+				    color: #fff;
+					i{}
+				}
+				
+			}
+			.carousel-caption{
+				position: static;
+				h5{
+					color:#333;
+				}
+				p{
+					color: $ThemeColor;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+	.carousel-control-prev{
+		span{
+			color: #333;
+			font-size: 25px;
+			&:hover{
+				color: $ThemeColor;
+
+			}
+
+		}
+		
+		
+		
+	}
+	.carousel-control-next{
+		span{
+			color: #333;
+			font-size: 25px;
+			&:hover{
+				color: $ThemeColor;
+		
+			}
+		}
+		
+		
+			
 	}
 }
 
 /***************footer********************/
 
 footer{
+
 	background-color: #101010;
 	padding: 80px 0;
+	@media(max-width: $media_sm){
+			text-align: center;
+			padding: 25px 0;
+		}
 	.widget{
 
 		.footer-logo{
@@ -556,8 +734,14 @@ footer{
 		h4{
 			padding-bottom: 40px;
 			color: #fff;
+			@media(max-width: $media_sm){
+			padding-bottom: 20px;
+			}
 		}
 		ul{
+			@media(max-width: $media_sm){
+			justify-content: center;
+			}
 			li{
 				a{
 					color: #989898;
@@ -576,17 +760,21 @@ footer{
 		}
 	}
 }
+
 .input-group{
 	margin-top: 20px;
 }
 .social-link{
 				a{
 					    padding: 10px;
-					    color: #3d3c3a;
+					    color: #fff;
 					    border: 2px solid #3d3c3a;
 					    border-radius: 50%;
 					    margin: 0 4px;
 					    transition-duration: 0.3s;
+					    @media(max-width: $media_sm){
+					    	    margin: 20px 10px;
+					    }
 					    &:hover{
 					    	color: #00aced;
 					    	border-color: #00aced;
@@ -607,34 +795,24 @@ footer{
 				}
 
 			}
-			.carousel-inner{
-				h5{color: #000;}
-				p{
-					color: #000;
-					text-transform: uppercase;
-					color:$ThemeColor;
-				}
-			}
-			.carousel-control-prev-icon{
-				background-color: #000;
-				
-			}
-			.carousel-control-next-icon{
-				background-color: #000;
-			}
+			
 
-		.input-group-text{
-			button{
-				background: $ThemeColor;
-    			color: #fff;
-			}
+.input-group-text{
+		button{
+			background: $ThemeColor;
+    		color: #fff;
 		}
+	}
 		
 
 .bottom-footer{
 	background-color: #000;
 	padding: 25px 0;
-	ul{
+	ul{ 
+		justify-content: flex-end;
+		@media(max-width: $media_sm){
+			justify-content: center;
+		}
 		li{
 			a{
 				color: #737272;
@@ -649,3 +827,4 @@ footer{
 		}
 	}
 }
+
