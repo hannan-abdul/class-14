@@ -615,4 +615,19 @@ footer {
       .bottom-footer ul li a:hover {
         color: #00aced; }
 
+form .input-group input {
+  border-radius: 20px !important; }
+form .input-group .input-group-text {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  right: 0;
+  z-index: 3; }
+  form .input-group .input-group-text button {
+    padding: .375rem .75rem;
+    background-color: #ff9b1a;
+    border-radius: 20px;
+    border: 0; }
+
 /*# sourceMappingURL=style.css.map */
