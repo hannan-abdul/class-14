@@ -828,3 +828,27 @@ footer{
 	}
 }
 
+form{
+	.input-group{
+		
+		input{
+			border-radius: 20px !important;
+			
+		}
+		.input-group-text{
+			padding: 0;
+			background-color: transparent;
+			border:0;
+			position: absolute;
+			    right: 0;
+    			z-index: 3;
+			button{
+				padding: .375rem .75rem;
+				background-color: $ThemeColor;
+				border-radius: 20px;
+				border:0;
+				
+			}
+		}
+	}
+}
